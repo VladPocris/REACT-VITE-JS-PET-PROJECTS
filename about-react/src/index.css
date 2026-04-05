@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body, #root {
+    height: 100%;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.header {
+    background: #21222A;
+    padding: 31px 0px;
+    padding-left: 26px;
+}
+
+.logo {
+    width: 28.93px;
+    height: 28.93px;
+}
+
+.logo-text {
+    display: flex;
+    font-family: Inter;
+    margin-left: 5px;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #61DAFB;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background: #282D35;
+    color: #fff;
+    background-image: url('../src/assets/react.svg');
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: center;
+    background-size: 400px;
+    background-position: calc(100% + 200px) center;
+}
+
+.main-header {
+    display: flex;
+    font-family: Inter;
+    margin-left: 27px;
+    margin-top: 55px;
+    font-weight: 700;
+    font-size: 39.06px;
+}
+
+.list-content {
+    margin-top: 30px;
+    margin-left: 70px;
+}
+
+.list-content-item {
+    padding-block: 10px;
+    line-height: 19px;
+}
+
+.list-content-item::marker {
+    font-size: 1.5rem;
+    color: #61DAFB;
+    text-decoration: none;
+}
