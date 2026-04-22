@@ -8,13 +8,19 @@ export default function Main() {
     const [ingredients, setIngredients] = React.useState([])
     const [recipeShown, setRecipeShown] = React.useState(false)
     const [recipeData, setRecipeData] = React.useState(null)
-    
+    const recipeSection = React.useRef(null)
+    console.log(recipeSection);
+
     async function getRecipe() {
         const recipeMarkdown = await getRecipeFromMistral(ingredients)
-        console.log(recipeMarkdown)
         setRecipeData(recipeMarkdown)
         setRecipeShown(prevShown => !prevShown)
     }
+    React.useEffect(() => {
+        (recipeData && recipeSection.current)
+            ? recipeSection.current.scrollIntoView({ behavior: 'smooth' })
+            : null
+    }, [recipeData])
 
     function addIngredient(formData) {
         const newIngredient = formData.get("ingredient")
@@ -32,14 +38,15 @@ export default function Main() {
                 />
                 <button>Add ingredient</button>
             </form>
-            
+
             {ingredients.length > 0 && <IngredientsList
+                ref={recipeSection}
                 ingredients={ingredients}
                 toggleRecipeShown={getRecipe}
                 getAiResponse={getRecipeFromMistral}
             />}
-            
-            {recipeData && <ClaudeRecipe aiResponse = {recipeData}/>}
+
+            {recipeData && <ClaudeRecipe aiResponse={recipeData} />}
         </main>
     )
 }
